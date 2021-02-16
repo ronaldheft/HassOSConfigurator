@@ -48,7 +48,7 @@ for container in $containers; do
   echo "###############/config/startup/startup.d/$container.sh";
   echo "###############Container: $containerid: tmp/$container.startup.sh";
   echo "#############################################################################"
-  docker cp /config/startup/startup.d/$container.sh $containerid:/tmp/$container.startup.sh;
+  docker cp /config/startup/startup.d/$container.sh $container:/tmp/$container.startup.sh;
   docker exec -t $containerid chmod 755 /tmp/$container.startup.sh;
   docker exec -t $containerid exec /tmp/$container.startup.sh 2>&1 | tee $logOption /config/startup/logs/$container.log &
   sleep 1;
